@@ -187,7 +187,7 @@ struct GammaPostBlendConfig {
 struct PostBlendGamutHwConfig {
   uint32_t gamut_version = sizeof(struct GamutConfig);
   uint32_t num_of_grid_entires = 17;
-  uint32_t grid_entries_width = 10;
+  uint32_t grid_entries_width = 12;
 };
 
 struct PostBlendGammaHwConfig {
