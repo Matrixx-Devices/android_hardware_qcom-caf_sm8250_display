@@ -27,6 +27,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include <hidl/LegacySupport.h>
+#include <linux/sched.h>
 #include "QtiComposer.h"
 
 using android::ProcessState;
@@ -58,12 +59,13 @@ int main(int, char **) {
     return -EINVAL;
   }
 
-  configureRpcThreadpool(4, true /*callerWillJoin*/);
+  configureRpcThreadpool(8, true /*callerWillJoin*/);
   if (composer->registerAsService() != android::OK) {
     ALOGE("Cannot register QTI composer service");
     return -EINVAL;
   }
 
+  android::hardware::setMinSchedulerPolicy(composer, SCHED_NORMAL, -20);
   ALOGI("Initialized qti-composer");
   joinRpcThreadpool();
   return 0;
