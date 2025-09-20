@@ -4,4 +4,4 @@ service vendor.qti.hardware.display.allocator /vendor/bin/hw/vendor.qti.hardware
     group graphics drmrpc
     capabilities SYS_NICE
     onrestart restart surfaceflinger
-    writepid /dev/cpuset/foreground/tasks
+    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
